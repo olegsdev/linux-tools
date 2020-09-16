@@ -1,6 +1,11 @@
-##Simple Linux Questions
+From [Linux System Administrator/DevOps Interview Questions](https://github.com/chassing/linux-sysadmin-interview-questions)
+
+
+## Simple Linux Questions
 
 **What is the name and the UID of the administrator user?**
+
+> **root** 
 
 > UID (user identifier) is a number assigned by Linux to each user on the system. This number is used to identify the user to the system and to determine which system resources the user can access. UIDs are stored in the /etc/passwd file
 Groups in Linux are defined by GIDs (group IDs)
@@ -197,3 +202,139 @@ etc...
 > ICMP is a protocol for sending various messages to report network conditions.
 ICMP is used by a device, like a router, to communicate with the source of a data packet about transmission issues. For example, if a datagram is not delivered, ICMP might report this back to the host with details to help discern where the transmission went wrong. It's a protocol that believes in direct communication in the workplace.
 Ping is a utility which uses ICMP messages to report back information on network connectivity and the speed of data relay between a host and a destination computer. It's one of the few instances where a user can interact directly with ICMP, which typically only functions to allow networked computers to communicate with one another automatically.
+
+
+
+## Medium Linux Questions
+
+
+**What do the following commands do and how would you use them?**
+```
+tee - read from standard input and write to standard output and files
+awk - pattern scanning and processing language (awk '{print $1}' myfile)
+tr - translate or delete characters
+cut - remove sections from each line of files
+tac - concatenate and print files in reverse
+curl - transfer a URL
+wget - The non-interactive network downloader
+watch - execute a program periodically, showing output fullscreen
+head - output the first part of files
+tail - output the last part of files
+less - opposite of more (more - file perusal filter for crt viewing)
+cat - concatenate files and print on the standard output
+touch - change file timestamps
+sar - Collect, report, or save system activity information.
+netstat - Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+tcpdump - dump traffic on a network
+lsof - list open files
+```
+
+**What does an **&** after a command do?**
+
+With & the process starts in the background, so you can continue to use the shell.
+
+
+**What does **& disown** after a command do?**
+
+Removes the process from the shell's job control, but it still leaves it connected to the terminal.
+
+https://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and
+
+
+**What is a packet filter and how does it work?**
+
+A packet filter is a piece of software which looks at the header of packets as they pass through, and decides the fate of the entire packet. It might decide to DROP the packet (i.e., discard the packet as if it had never received it), ACCEPT the packet (i.e., let the packet go through), or something more complicated.
+
+Under Linux, packet filtering is built into the kernel (as a kernel module, or built right in), and there are a few trickier things we can do with packets, but the general principle of looking at the headers and deciding the fate of the packet is still there.
+
+https://netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-3.html
+
+
+**What is Virtual Memory?**
+
+Virtual memory is a layer of abstraction provided to each process. The computer has, say, 2GB of physical RAM, addressed from 0 to 2G. A process might see an address space of 4GB, which it has entirely to itself. The mapping from virtual addresses to physical addresses is handled by a memory management unit, which is managed by the operating system. Typically this is done in 4KB "pages".
+
+https://superuser.com/questions/42854/what-is-virtual-memory
+
+
+**What is swap and what is it used for?**
+
+Simply put, virtual memory is a combination of RAM and disk space that running processes can use. Swap space is the portion of virtual memory that is on the hard disk, used when RAM is full.
+
+https://stackoverflow.com/questions/4970421/whats-the-difference-between-virtual-memory-and-swap-space
+
+
+**What is an A record, an NS record, a PTR record, a CNAME record, an MX record?**
+
+- Address Mapping record (**A Record**)—also known as a DNS host record, stores a hostname and its corresponding IPv4 address.
+- Name Server records (**NS Record**)—specifies that a DNS Zone, such as “example.com” is delegated to a specific Authoritative Name Server, and provides the address of the name server.
+- Reverse-lookup Pointer records (**PTR Record**)—allows a DNS resolver to provide an IP address and receive a hostname (reverse DNS lookup).
+- Canonical Name record (**CNAME Record**)—can be used to alias a hostname to another hostname. When a DNS client requests a record that contains a CNAME, which points to another hostname, the DNS resolution process is repeated with the new hostname.
+- Mail exchanger record (**MX Record**)—specifies an SMTP email server for the domain, used to route outgoing emails to an email server.
+
+
+**Are there any other RRs and what are they used for?**
+
+- IP Version 6 Address record (**AAAA Record**)—stores a hostname and its corresponding IPv6 address.
+- Text Record (**TXT Record**)—typically carries machine-readable data such as opportunistic encryption, sender policy framework, DKIM, DMARC, etc.
+- Certificate record (**CERT Record**)—stores encryption certificates—PKIX, SPKI, PGP, and so on.
+- Start of Authority (**SOA Record**)—this record appears at the beginning of a DNS zone file, and indicates the Authoritative Name Server for the current DNS zone, contact details for the domain administrator, domain serial number, and information on how frequently DNS information for this zone should be refreshed.
+- **SRV record** - the ‘service’ record specifies a host and port for specific services such as Voice Over IP (VOIP), instant messaging, etc.
+- etc...
+
+
+**What is a Split-Horizon DNS?**
+
+When two zones for the same domain are created, one to be used by the internal network, the other used by the external network (Internet).
+
+p.s. In the field of Networking, (Split Horizon) is used for a method that prevents the forming of loops in routing advertisement.
+
+
+**What is the sticky bit?**
+
+The sticky bit is a user ownership access right flag that can be assigned to files and directories on Unix-like systems
+
+When a directory's sticky bit is set, the filesystem treats the files in such directories in a special way so only the file's owner, the directory's owner, or root user can rename or delete the file. Without the sticky bit set, any user with write and execute permissions for the directory can rename or delete contained files, regardless of the file's owner. Typically this is set on the /tmp directory to prevent ordinary users from deleting or moving other users' files.
+
+
+**What does the immutable bit do to a file?**
+
+make a file immutable, a file can not be:
+ - Modified
+ - Deleted
+ - Renamed
+ - No soft or hard link created by anyone including root user.
+
+Only the root or a process possessing the CAP_LINUX_IMMUTABLE capability can set or clear this attribute. Use the lsattr command to list file attributes.
+chattr +i file
+
+
+**What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?**
+
+A file in the file system is basically a link to an inode. A hard link, then, just creates another file with a link to the same underlying inode.
+
+When you delete a file, it removes one link to the underlying inode.  The inode is only deleted (or deletable/over-writable) when all links to  the inode have been deleted.
+
+A symbolic link is a link to another name in the file system.
+
+Once a hard link has been made the link is to the inode. Deleting,  renaming, or moving the original file will not affect the hard link as  it links to the underlying inode. Any changes to the data on the inode  is reflected in all files that refer to that inode.
+
+Note: Hard links are only valid within the same File System. Symbolic  links can span file systems as they are simply the name of another  file.
+
+https://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link
+
+
+**What is an inode and what fields are stored in an inode?**
+
+A Unix file is "stored" in two different parts of the disk - the data blocks and the inodes. (I won't get into superblocks and other esoteric information.) The data blocks contain the "contents" of the file. The information about the file is stored elsewhere - in the inode. Both the inodes and data blocks are stored in a "filesystem" which is how a disk partition is organized. The inode contains the following pieces of information
+ - Mode/permission (protection)
+ - Owner ID
+ - Group ID
+ - Size of file
+ - Number of hard links to the file
+ - Time last accessed
+ - Time last modified
+ - Time inode last modified
+
+https://www.grymoire.com/Unix/Inodes.html
+
