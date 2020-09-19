@@ -338,3 +338,119 @@ A Unix file is "stored" in two different parts of the disk - the data blocks and
 
 https://www.grymoire.com/Unix/Inodes.html
 
+
+
+**How to force/trigger a file system check on next reboot?**
+
+- sysVinit: touch /forcefsck  or shutdown -rF (deprecated)
+- systemd-fsck:  Kernel Command: fsck.mode= [ "auto", "force", "skip"]  or fsck.repair= ["preen", "yes", "no"]
+- tune2fs -c 1 /dev/sda - (file system check will run after each reboot before the loading the OS)
+
+
+**What is SNMP and what is it used for?**
+
+SNMP stands for Simple Network Management Protocol.  It is a standard way of monitoring hardware and software from nearly any manufacturer, from Juniper, to Cisco, to Microsoft, Unix, and everything in between. SNMP requires only a couple of basic components to work: a management station, and an agent.
+
+SNMP is very simple, yet powerful.  It has the ability to help you manage your network by:
+ -  Provide Read/Write abilities – for example you could use it to reset passwords remotely, or re-configure IP addresses.
+ -  Collect information on how much bandwidth is being used.
+ -  Collect error reports into a log, useful for troubleshooting and identifying trends.
+ -  Email an alert when your server is low on disk space.
+ -  Monitor your servers’ CPU and Memory use, alert when thresholds are exceeded.
+ -  Page or send an SMS text-message when a device fails.
+ -  Can perform active polling, i.e. Monitoring station asks devices for status every few minutes.
+ -  Passive SNMP – devices can send alerts to a monitoring station on error conditions.
+
+
+**What is a runlevel and how to get the current runlevel?**
+
+A runlevel is a preset operating state on a sysVinit-like operating system. A system can be booted into any of several runlevels. Each runlevel designates a different system configuration and allows access to a different combination of processes 
+```
+    0 – System halt i.e the system can be safely powered off with no activity.
+    1 – Single user mode.
+    2 – Multiple user mode with no NFS(network file system).
+    3 – Multiple user mode under the command line interface and not under the graphical user interface.
+    4 – User-definable.
+    5 – Multiple user mode under GUI (graphical user interface) 
+    6 – Reboot which is used to restart the system.
+```
+```
+runlevel - Print previous and current SysV runlevel
+```
+
+
+**What is SSH port forwarding?**
+
+``` ssh -L 80:intra.example.com:80 gw.example.com ```
+
+SSH port forwarding is a mechanism in SSH for tunneling application ports from the client machine to the server machine, or vice versa. It can be used for adding encryption to legacy applications, going through firewalls, and some system administrators and IT professionals use it for opening backdoors into the internal network from their home machines. It can also be abused by hackers and malware to open access from the Internet to the internal network.
+https://www.ssh.com/ssh/tunneling/example
+
+
+**What is the difference between local and remote port forwarding?**
+
+Local forwarding is used to forward a port from the client machine to the server machine. Basically, the SSH client listens for connections on a configured port, and when it receives a connection, it tunnels the connection to an SSH server. The server connects to a configurated destination port, possibly on a different machine than the SSH server.
+
+Typical uses for local port forwarding include:
+ -   Tunneling sessions and file transfers through jump servers
+ -   Connecting to a service on an internal network from the outside
+ -   Connecting to a remote file share over the Internet
+
+Remote Forwarding: (-R option)
+
+```ssh -R 8080:localhost:80 public.example.com```
+
+This allows anyone on the remote server to connect to TCP port 8080 on the remote server. The connection will then be tunneled back to the client host, and the client then makes a TCP connection to port 80 on localhost. Any other host name or IP address could be used instead of localhost to specify the host to connect to. 
+
+This particular example would be useful for giving someone on the outside access to an internal web server.
+
+
+**What are the steps to add a user to a system without using useradd/adduser?**
+
+- Edit /etc/passwd with vipw and add a new line for the new account. 
+- edit /etc/group with vigr
+- Create the home directory of the user with mkdir.
+- Copy the files from /etc/skel to the new home directory.
+- Fix ownerships and permissions with chown and chmod. 
+- Set the password with passwd .
+
+https://unix.stackexchange.com/questions/153225/what-steps-to-add-a-user-to-a-system-without-using-useradd-adduser
+
+
+**What is MAJOR and MINOR numbers of special files?**
+
+The Linux kernel represents character and block devices as pairs of numbers **major:minor**
+
+Some major numbers are reserved for particular device drivers. Other major numbers are dynamically assigned to a device driver when Linux boots. For example, major number 94 is always the major number for DASD devices while the device driver for channel-attached tape devices has no fixed major number. A major number can also be shared by multiple device drivers. See /proc/devices to find out how major numbers are assigned on a running Linux instance.
+
+The device driver uses the minor number <minor> to distinguish individual physical or logical devices. For example, the DASD device driver assigns four minor numbers to each DASD: one to the DASD as a whole and the other three for up to three partitions.
+
+Device drivers assign device names to their devices, according to a device driver-specific naming scheme. Each device name is associated with a minor number.
+
+https://www.ibm.com/support/knowledgecenter/linuxonibm/com.ibm.linux.z.lgdd/lgdd_c_udev.html
+
+
+**Describe the mknod command and when you'd use it.**
+```
+mknod - make block or character special files, Create the special file NAME of the given TYPE.
+https://unix.stackexchange.com/questions/10723/what-is-the-mknod-command-used-for
+```
+
+**Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.**
+```
+- may be out of i-nodes (df -i)
+- may be space taken up by files that have been deleted, but are still open (lsof -nP | grep '(deleted)')
+```
+
+**Describe a scenario when deleting a file, but 'df' not showing the space being freed.**
+```
+file still open
+lsof /tmp | grep deleted | sort -n -k7 -r
+lsof -nP | grep '(deleted)'
+```
+
+**Describe how 'ps' works.**
+
+ps command works by reading files in the proc filesystem. The directory /proc/PID contains various files that provide information about process PID. The content of these files is generated on the fly by the kernel when a process reads them.
+
+https://unix.stackexchange.com/questions/262177/how-does-the-ps-command-work
