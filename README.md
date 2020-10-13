@@ -3,13 +3,11 @@
 ---
 
 ### Teleconsole - service to share your terminal session
-```
+```bash
 #install:
 curl https://www.teleconsole.com/get.sh | sh
-
 #start service:
 teleconsole
-
 #client connect:
 teleconsole join <session ID> 
 # access through web:
