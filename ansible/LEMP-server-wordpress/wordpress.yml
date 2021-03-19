@@ -1,0 +1,12 @@
+---
+- name: Install WordPress, MariaDB, Nginx, and PHP-FPM
+  hosts: [lemp_server]
+  remote_user: vagrant
+  become: true
+
+  roles:
+    - common
+    - mariadb
+    - nginx
+    - php-fpm
+    - wordpress
