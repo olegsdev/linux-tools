@@ -1,0 +1,25 @@
+# MariaDB + Mediawiki in Docker
+version: '3.3'
+services:
+   database:
+     image: mariadb:10.5
+     volumes:
+       # - ./wiki.sql:/docker-entrypoint-initdb.d/init.sql # prepopulate database
+       - ./db_data:/var/lib/mysql 
+     restart: unless-stopped # always
+     env_file:
+      - .env
+     environment:
+      DOCKER_COMPOSE_YML_LOCATION: ${PWD}
+     container_name: wiki_db
+   mediawiki:
+    image: mediawiki:1.35
+    restart: unless-stopped
+    ports:
+      - 8081:80
+    links:
+      - database
+    volumes:
+      - ./wiki:/var/www/html/
+      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+    container_name: wiki
