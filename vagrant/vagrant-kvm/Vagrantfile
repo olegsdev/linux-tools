@@ -1,0 +1,78 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "vm1" do |vm1|
+    vm1.vm.box = "generic/ubuntu2004"
+    vm1.vm.hostname = "ubuntu20"
+    vm1.vm.network :public_network,
+      :dev => 'br0',
+      # :mode => "bridge",
+      :type => 'bridge',
+      :ip => "192.168.10.51"
+    vm1.vm.provider :libvirt do |conf|
+      conf.memory = 2048
+      conf.cpus = 2
+      # conf.nested = true
+      # conf.volume_cache = 'none'
+    end
+  end
+
+  config.vm.define "vm2" do |vm2|
+    # vm2.vm.box = "centos/8"
+    vm2.vm.box = "generic/centos8"
+    vm2.vm.hostname = "centos8"
+    vm2.vm.network :public_network,
+      :dev => 'br0',
+      :type => 'bridge',
+      :ip => "192.168.10.58"
+    vm2.vm.provider :libvirt do |conf|
+      conf.memory = 2048
+      conf.cpus = 1
+    end
+  end
+
+#  config.vm.define "vm3" do |vm3|
+#    vm3.vm.box = "generic/ubuntu1804"
+#    vm3.vm.hostname = "ubuntu18"
+#    vm3.vm.network :public_network,
+#      :dev => 'br0',
+#      :type => 'bridge',
+#      :ip => "192.168.10.52"
+#    vm3.vm.provider :libvirt do |conf|
+#      conf.memory = 1024
+#      conf.cpus = 1
+#    end
+#  end
+
+#  config.vm.define "vm4" do |vm4|
+#    # vm4.vm.box = "centos/7"
+#    vm4.vm.box = "generic/centos7"
+#    vm4.vm.hostname = "centos7"
+#    vm4.vm.network :public_network,
+#      :dev => 'br0',
+#      :type => 'bridge',
+#      :ip => "192.168.10.57"
+#    vm4.vm.provider :libvirt do |conf|
+#      conf.memory = 1024
+#      conf.cpus = 1
+#    end
+#  end
+
+  # config.vm.provider "libvirt" 
+  config.vm.provision "file", source: "../../id_rsa.pub", destination: ".ssh/id_rsa_oleg.pub"
+  config.vm.provision "shell", inline: <<-SHELL
+      cat /home/vagrant/.ssh/id_rsa_oleg.pub >> /home/vagrant/.ssh/authorized_keys
+    SHELL
+  # config.provider :libvirt do |conf|
+      # conf.memory = 1024
+      # conf.cpus = 1
+    # end
+  
+end

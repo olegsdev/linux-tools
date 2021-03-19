@@ -1,0 +1,66 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+
+
+#  # vm1
+  config.vm.define "vm1-centos7" do |vm1|
+    vm1.vm.box = "isc/lxc-centos-7"
+    #vm1.vm.box = "visibilityspots/centos-7.x-minimal"
+    vm1.vm.hostname = "vm1-centos7"
+    vm1.vm.provision "shell" do |script|
+      script.path = "centosIp.sh"
+      script.args = "10.0.3.47"
+    end
+    #vm1.vm.provision :shell, :inline => "yum update -y"
+    vm1.vm.provision :shell, :inline => "reboot" 
+  end  
+#
+#  # vm2
+#  config.vm.define "vm2-centos8" do |vm2|
+#    #vm2.vm.box = "isc/lxc-centos-7"
+#    vm2.vm.box = "visibilityspots/centos-8.x-minimal"
+#    vm2.vm.hostname = "vm2-centos8"
+#    vm2.vm.provision "shell" do |script|
+#      script.path = "centosIp.sh"
+#      script.args = "10.0.3.48"
+#    end
+#    #vm2.vm.provision :shell, :inline => "dnf update -y" 
+#    vm2.vm.provision :shell, :inline => "reboot" 
+#  end
+
+  # vm3
+  config.vm.define "vm3-ubuntu18" do |vm3|
+    vm3.vm.box = "isc/lxc-ubuntu-18.04"
+    vm3.vm.hostname = "vm3-ubuntu18"
+    vm3.vm.provision "shell" do |script|
+      script.path = "ubuntuIp.sh"
+      script.args = "10.0.3.45"
+    end
+    #vm3.vm.provision :shell, :inline => "apt-get update && apt-get upgrade -y"
+    #vm3.vm.provision :shell, :inline => "apt-get install openssh-server -y"
+    vm3.vm.provision :shell, :inline => "reboot" 
+  end  
+
+  # vm4
+  config.vm.define "vm4-ubuntu20" do |vm4|
+    vm4.vm.box = "isc/lxc-ubuntu-20.04"
+    vm4.vm.hostname = "vm4-ubuntu20"
+    vm4.vm.provision "shell" do |script|
+      script.path = "ubuntuIp.sh"
+      script.args = "10.0.3.46"
+    end
+    vm4.vm.provision :shell, :inline => "reboot" 
+  end 
+  
+  config.vm.provider "lxc" 
+  config.vm.provision "file", source: "../../authorized_keys", destination: ".ssh/authorized_keys"
+
+
+
+end

@@ -1,23 +1,31 @@
 Useful linux tools (config examples)
-==================================
+====================================
 
 ## <a name='toc'>Content list</a>
 
   1. [Ansible](#ansible)
   1. [Docker](#docker)
+  1. [Vagrant](#vagrant)
   1. [Teleconsole](#teleconsole)
-
 
 
 #### <a name='ansible'>Ansible examples:</a>
 
 * [LEMP server + WordPress (CentOS7)](/ansible/LEMP-server-wordpress/)
-* [MySQL example](/ansible/mysql-test.yml)
+* [MySQL libvirt plugin](/ansible/mysql-test.yml)
 
 
 #### [[⬆]](#toc) <a name='docker'>Docker examples:</a>
 
 * [MariaDB + Mediawiki Docker Compose](/docker/docker-compose_mediawiki.yml)
+
+
+#### [[⬆]](#toc) <a name='vagrant'>Vagrant examples:</a>
+
+* [Vagrant + LXC plugin](/vagrant/vagrant-lxc/Vagrantfile)
+* [Vagrant + libvirt plugin (KVM)](/vagrant/vagrant-kvm/Vagrantfile)
+* [Vagrant + VirtualBox](/vagrant/vagrant-virtualbox/Vagrantfile)
+
 
 
 #### [[⬆]](#toc) <a name='teleconsole'>Teleconsole - terminal sharing:</a>
