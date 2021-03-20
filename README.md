@@ -9,7 +9,7 @@ Useful linux tools (config examples)
   1. [LXD](LXD.md)
   1. [Nginx](#nginx)
   1. [AutoBackupMySQL](/autobackupmysql.sh)
-  1. [AutoBackupMySQL](rsnapshot.conf)
+  1. [rsnapshot](rsnapshot.conf)
   1. [Teleconsole](#teleconsole)
 
 
