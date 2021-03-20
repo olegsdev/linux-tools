@@ -8,6 +8,7 @@ Useful linux tools (config examples)
   1. [Vagrant](#vagrant)
   1. [LXD](LXD.md)
   1. [Nginx](#nginx)
+  1. [AutoBackupMySQL](/autobackupmysql.sh)
   1. [Teleconsole](#teleconsole)
 
 
