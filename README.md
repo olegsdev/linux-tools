@@ -1,7 +1,5 @@
-Useful linux tools (config examples)
-====================================
 
-## <a name='toc'>Content list</a>
+## <a name='toc'>Tools list:</a>
 
   1. [Ansible](#ansible)
   1. [Docker](#docker)
@@ -9,7 +7,7 @@ Useful linux tools (config examples)
   1. [LXD](LXD.md)
   1. [Nginx](#nginx)
   1. [AutoBackupMySQL](/autobackupmysql.sh)
-  1. [rsnapshot](rsnapshot.conf)
+  1. [Rsnapshot](rsnapshot.conf)
   1. [Teleconsole](#teleconsole)
 
 
@@ -40,6 +38,12 @@ Useful linux tools (config examples)
 * [Nginx config for Nextcloud](/nginx/nextcloud.conf)
 * [Nginx + php-fpm for Mediawiki](/nginx/mediawiki.conf)
 * [Nginx (mix)](/nginx/nginx.conf)
+
+
+#### <a name='kvm'>libvirt(kvm) scripts:</a>
+
+* [Simple script for backuping libvirt images + xml confs](/kvm/libvirt-backup.sh)
+* [Stop all running vms](/kvm/vms-stop.sh)
 
 
 #### [[⬆]](#toc) <a name='teleconsole'>Teleconsole - terminal sharing:</a>
