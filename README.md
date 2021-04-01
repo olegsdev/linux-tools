@@ -6,6 +6,7 @@
   1. [Vagrant](#vagrant)
   1. [LXD](LXD.md)
   1. [Nginx](#nginx)
+  1. [KVM](#kvm)
   1. [AutoBackupMySQL](/autobackupmysql.sh)
   1. [Rsnapshot](rsnapshot.conf)
   1. [Teleconsole](#teleconsole)
@@ -14,7 +15,7 @@
 #### <a name='ansible'>Ansible examples:</a>
 
 * [LEMP server + WordPress (CentOS7)](/ansible/LEMP-server-wordpress/)
-* [MySQL libvirt plugin](/ansible/mysql-test.yml)
+* [MySQL](/ansible/mysql-test.yml)
 
 
 #### [[⬆]](#toc) <a name='docker'>Docker examples:</a>
