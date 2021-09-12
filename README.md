@@ -5,14 +5,14 @@
   1. [Apache Web](#apache)
   1. [CloudFormation](#cloudFormation)
   1. [Docker](#docker)
-  1. [Vagrant](#vagrant)
-  1. [LXD](LXD.md)
-  1. [Nginx](#nginx)
   1. [KVM](#kvm)
-  1. [AutoBackupMySQL](/autobackupmysql.sh)
+  1. [LXD](LXD.md)
+  1. [MySQLAutoBackup](/autobackupmysql.sh)
+  1. [Nginx](#nginx)
   1. [Rsnapshot](rsnapshot.conf)
   1. [Terraform](#terraform)
   1. [Teleconsole](#teleconsole)
+  1. [Vagrant](#vagrant)
 
 
 #### <a name='ansible'>Ansible examples:</a>
@@ -21,7 +21,7 @@
 * [MySQL](/ansible/mysql-test.yml)
 
 
-#### [[⬆]](#toc) <a name='apache'>Apache VirtualHost Examples:</a>
+#### <a name='apache'>Apache VirtualHost Examples:</a>
 
 * [Apache Nextcloud conf](/apache/nextcloud.conf)
 * [Apache Nextcloud2 conf](/apache/nextcloudSimple.conf)
@@ -39,11 +39,10 @@
 * [MariaDB + Mediawiki Docker Compose](/docker/docker-compose_mediawiki.yml)
 
 
-#### [[⬆]](#toc) <a name='vagrant'>Vagrant examples:</a>
+#### [[⬆]](#toc) <a name='kvm'>libvirt(kvm) scripts:</a>
 
-* [Vagrant + LXC plugin](/vagrant/vagrant-lxc/Vagrantfile)
-* [Vagrant + libvirt plugin (KVM)](/vagrant/vagrant-kvm/Vagrantfile)
-* [Vagrant + VirtualBox](/vagrant/vagrant-virtualbox/Vagrantfile)
+* [Simple script for backuping libvirt images + xml confs](/kvm/libvirt-backup.sh)
+* [Stop all running vms](/kvm/vms-stop.sh)
 
 
 #### [[⬆]](#toc) <a name='nginx'>Nginx examples:</a>
@@ -57,16 +56,17 @@
 * [Nginx (mix)](/nginx/nginx.conf)
 
 
-#### <a name='kvm'>libvirt(kvm) scripts:</a>
-
-* [Simple script for backuping libvirt images + xml confs](/kvm/libvirt-backup.sh)
-* [Stop all running vms](/kvm/vms-stop.sh)
-
-
-#### <a name='terraform'>Terraform examples:</a>
+#### [[⬆]](#toc) <a name='terraform'>Terraform examples:</a>
 
 * [Terraform test GCP](/terraform/googleStart.tf)
 * [Terraform test AWS](/terraform/awsStart.tf)
+
+
+#### [[⬆]](#toc) <a name='vagrant'>Vagrant examples:</a>
+
+* [Vagrant + LXC plugin](/vagrant/vagrant-lxc/Vagrantfile)
+* [Vagrant + libvirt plugin (KVM)](/vagrant/vagrant-kvm/Vagrantfile)
+* [Vagrant + VirtualBox](/vagrant/vagrant-virtualbox/Vagrantfile)
 
 
 #### [[⬆]](#toc) <a name='teleconsole'>Teleconsole - terminal sharing:</a>
