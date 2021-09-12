@@ -2,6 +2,7 @@
 ## <a name='toc'>Tools list:</a>
 
   1. [Ansible](#ansible)
+  1. [CloudFormation](#cloudFormation)
   1. [Docker](#docker)
   1. [Vagrant](#vagrant)
   1. [LXD](LXD.md)
@@ -17,6 +18,12 @@
 
 * [LEMP server + WordPress (CentOS7)](/ansible/LEMP-server-wordpress/)
 * [MySQL](/ansible/mysql-test.yml)
+
+
+#### <a name='cloudFormation'>CloudFormation examples:</a>
+
+* [CloudFormation EC2 Instance Ubuntu20.04](/cloudFormation/ec2-ubuntu20.yml)
+* [CloudFormation SecurityGroups](/cloudFormation/ec2-securityGroup.yml)
 
 
 #### [[⬆]](#toc) <a name='docker'>Docker examples:</a>
