@@ -2,6 +2,7 @@
 ## <a name='toc'>Tools list:</a>
 
   1. [Ansible](#ansible)
+  1. [Apache Web](#apache)
   1. [CloudFormation](#cloudFormation)
   1. [Docker](#docker)
   1. [Vagrant](#vagrant)
@@ -18,6 +19,13 @@
 
 * [LEMP server + WordPress (CentOS7)](/ansible/LEMP-server-wordpress/)
 * [MySQL](/ansible/mysql-test.yml)
+
+
+#### [[⬆]](#toc) <a name='apache'>Apache VirtualHost Examples:</a>
+
+* [Apache Nextcloud conf](/apache/nextcloud.conf)
+* [Apache Nextcloud2 conf](/apache/nextcloudSimple.conf)
+* [Apache zendFramework](/apache/zendFramework.conf)
 
 
 #### <a name='cloudFormation'>CloudFormation examples:</a>
