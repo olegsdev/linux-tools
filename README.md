@@ -9,6 +9,7 @@
   1. [KVM](#kvm)
   1. [AutoBackupMySQL](/autobackupmysql.sh)
   1. [Rsnapshot](rsnapshot.conf)
+  1. [Terraform](#terraform)
   1. [Teleconsole](#teleconsole)
 
 
@@ -45,6 +46,12 @@
 
 * [Simple script for backuping libvirt images + xml confs](/kvm/libvirt-backup.sh)
 * [Stop all running vms](/kvm/vms-stop.sh)
+
+
+#### <a name='terraform'>Terraform examples:</a>
+
+* [Terraform test GCP](/terraform/googleStart.tf)
+* [Terraform test AWS](/terraform/awsStart.tf)
 
 
 #### [[⬆]](#toc) <a name='teleconsole'>Teleconsole - terminal sharing:</a>
