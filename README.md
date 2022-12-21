@@ -1,18 +1,6 @@
 
-## <a name='toc'>Tools list:</a>
+## <a name='top'>Tools list:</a>
 
-  1. [Ansible](#ansible)
-  1. [Apache Web](#apache)
-  1. [CloudFormation](#cloudFormation)
-  1. [Docker](#docker)
-  1. [KVM](#kvm)
-  1. [LXD](LXD.md)
-  1. [MySQLAutoBackup](/autobackupmysql.sh)
-  1. [Nginx](#nginx)
-  1. [Rsnapshot](rsnapshot.conf)
-  1. [Terraform](#terraform)
-  1. [Teleconsole](#teleconsole)
-  1. [Vagrant](#vagrant)
 
 
 #### <a name='ansible'>Ansible examples:</a>
@@ -34,18 +22,18 @@
 * [CloudFormation SecurityGroups](/cloudFormation/ec2-securityGroup.yml)
 
 
-#### [[⬆]](#toc) <a name='docker'>Docker examples:</a>
+#### <a name='docker'>Docker examples:</a>
 
 * [MariaDB + Mediawiki Docker Compose](/docker/docker-compose_mediawiki.yml)
 
 
-#### [[⬆]](#toc) <a name='kvm'>libvirt(kvm) scripts:</a>
+#### <a name='kvm'>libvirt(kvm) scripts:</a>
 
 * [Simple script for backuping libvirt images + xml confs](/kvm/libvirt-backup.sh)
 * [Stop all running vms](/kvm/vms-stop.sh)
 
 
-#### [[⬆]](#toc) <a name='nginx'>Nginx examples:</a>
+#### <a name='nginx'>Nginx examples:</a>
 
 * [Nginx Reverse Proxy](/nginx/reverse-proxy.conf)
 * [Nginx HTTP Load Balancing](/nginx/load-balancer-http.conf)
@@ -56,28 +44,15 @@
 * [Nginx (mix)](/nginx/nginx.conf)
 
 
-#### [[⬆]](#toc) <a name='terraform'>Terraform examples:</a>
+#### <a name='terraform'>Terraform examples:</a>
 
 * [Terraform test GCP](/terraform/googleStart.tf)
 * [Terraform test AWS](/terraform/awsStart.tf)
 
 
-#### [[⬆]](#toc) <a name='vagrant'>Vagrant examples:</a>
+#### <a name='vagrant'>Vagrant examples:</a>
 
 * [Vagrant + LXC plugin](/vagrant/vagrant-lxc/Vagrantfile)
 * [Vagrant + libvirt plugin (KVM)](/vagrant/vagrant-kvm/Vagrantfile)
 * [Vagrant + VirtualBox](/vagrant/vagrant-virtualbox/Vagrantfile)
 
-
-#### [[⬆]](#toc) <a name='teleconsole'>Teleconsole - terminal sharing:</a>
-```bash
-#install:
-curl https://www.teleconsole.com/get.sh | sh
-#start service:
-teleconsole
-#client connect:
-teleconsole join <session ID> 
-# access through web:
-https://teleconsole.com/s/ace723ba055a28c66ae22b7a13c18d44fbc5a8b8 
-```
-Source: https://github.com/gravitational/teleconsole
